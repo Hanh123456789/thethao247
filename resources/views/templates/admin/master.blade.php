@@ -1,0 +1,5 @@
+@include('templates.admin.header')
+@include('templates.admin.leftbar')
+@include('templates.admin.header1')
+@yield('main')
+@include('templates.admin.footer')

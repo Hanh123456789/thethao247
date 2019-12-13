@@ -1,0 +1,146 @@
+.button-sumit{
+    width: 49.8% !important;
+    display: inline-block;
+}
+input[type=button].button-sumit{
+    margin-top: 0px;
+
+}
+.content-product{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.note-handle{
+    display: none;
+}
+.description{
+    overflow: auto;
+    height: 400px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+}
+.modal-content{
+    background-color: #f6f6f6;
+}
+.content-product p{
+    color: #00800a;
+    font-size: 17px;
+}
+.description p {
+    color: black !important;
+    font-size: 15px !important;
+
+}
+.table>thead>tr>th{
+    border-bottom: 1px solid #868585;
+}
+table, th, td{
+    border:1px solid #868585;
+}
+table{
+    border-collapse:collapse;
+    width:100%;
+}
+th, td{
+    text-align:left;
+    padding:10px;
+}
+.table-css tr:nth-child(odd){
+    background-color:white !important; ;
+}
+.table-css tr:nth-child(even){
+    background-color:#eee !important; ;
+}
+table tr:nth-child(1){
+    background-color:skyblue !important;
+}
+.fixed-table-loading{
+    display: none;
+}
+table {
+    margin-top: 30px;
+}
+ canvas {
+     vertical-align: middle;
+     width: 1042px;
+     margin-left: 2%;
+ }
+.text-bill{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+.trangchu{
+    background: url("img/lauren-mancke-aOC7TSLb1o8-unsplash.png");
+    height: 475px;
+    position: relative;
+}
+.trangchu1{
+    object-fit: contain;
+    opacity: 0.9;
+    background-color: #ffffff;
+    width: 100%;
+    height: 475px;
+}
+
+.chutrangchu{
+    font-family: Raleway;
+    font-size: 44px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.16;
+    letter-spacing: 0.44px;
+    text-align: center;
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 15px;
+}
+.so{
+    font-family: Montserrat;
+    font-size: 58px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: center;
+    color: #07d4f5;
+    margin-top: 9px;
+    margin-left: -90px;
+
+}
+.ten{
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: black;
+}
+.anh{
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.19);
+}
+.sidebar-nav .metismenu .active a{
+    color: #f8f9fa;
+    text-decoration: none;
+    background: #e12503;
+}
+.haha a:hover{
+    color: #f8f9fa !important;
+    text-decoration: none!important;
+    background: #e12503!important;
+}
