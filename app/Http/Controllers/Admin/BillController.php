@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use App\Models\Bill;
 use App\Models\BillDetail;
+use App\Models\Carts;
 use App\Models\Product;
+use App\Models\Rating;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BillController extends Controller
 {
@@ -30,6 +33,7 @@ class BillController extends Controller
         $bill = Bill::findOrFail($id);
         $bill_details = BillDetail::where('id_bill',$id)->get();
         return view('admin.bill.billdetail',compact('bill_details','bill'));
+
     }
     public function destroy($id){
         $bill= Bill::findOrFail($id);

@@ -173,7 +173,7 @@ class IndexController extends Controller
         }else{
             $price = $products->unit_price;
         }
-
+        echo number_format($tongtien-$price),'-', $tongtien-$price;
     }
     public function updatestatus5(Request $request){
         $cart = $request->cartSl;

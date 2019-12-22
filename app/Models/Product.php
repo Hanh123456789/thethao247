@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
@@ -64,7 +65,6 @@ class Product extends Model
          }else{
              echo $arrcontent[0];
          }
-
-
     }
+
 }

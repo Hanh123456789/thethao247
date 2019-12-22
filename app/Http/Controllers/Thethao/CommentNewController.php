@@ -26,7 +26,9 @@ class CommentNewController extends Controller
        CommentNew::create($data);
         echo '  <div class="media mt-30">
                   <div class="media-left pr-30">
-                    <a href="#"><img class="hinh-anh-comment media-object" src="../public/images/'.$user->images.'" alt="#"></a>
+       <img class="hinh-anh-comment media-object" src="../public/images/'
+            .(($user->images =='')?'user.jpg':"$user->images")
+            .'" alt="#">
                   </div>
                   <div class="media-body">
                     <div class="clearfix">
@@ -55,7 +57,9 @@ class CommentNewController extends Controller
         $user = User::findOrFail($id_user);
         echo '<div class="media mt-30" style="margin-left: 12%;margin-top: 10px">
                           <div class="media-left pr-30">
-                            <a href="#"><img class="hinh-anh-comment-con media-object" src="../public/images/'.$user->images.'" alt="#"></a>
+          <img class="hinh-anh-comment-con media-object" src="../public/images/'
+            .(($user->images =='')?'user.jpg':"$user->images")
+            .'" alt="#">
                           </div>
                           <div class="media-body">
                             <div class="clearfix">

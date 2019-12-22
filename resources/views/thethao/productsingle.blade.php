@@ -389,7 +389,11 @@
                                                             @foreach($comments_parent as $comment)
                                                                 <div class="media mt-30">
                                                                     <div class="media-left pr-30">
-                                                                        <a href="#"><img class="hinh-anh-comment media-object" src="../public/images/{{$comment->user->images}}" alt="#"></a>
+                                                                        @if($comment->user->images =="")
+                                                                            <img class="hinh-anh-comment media-object" src="../public/thethao/img/logo/user.jpg" alt="#">
+                                                                        @else
+                                                                      <img class="hinh-anh-comment media-object" src="../public/images/{{$comment->user->images}}" alt="#">
+                                                                        @endif
                                                                     </div>
                                                                     <div class="media-body">
                                                                         <div class="clearfix">
@@ -409,7 +413,11 @@
                                                                         @if($comment_con->id_parent == $comment->id)
                                                                             <div class="media mt-30" style="margin-left: 12%">
                                                                                 <div class="media-left pr-30">
-                                                                                    <a href="#"><img class="hinh-anh-comment-con media-object" src="../public/images/{{$comment_con ->user->images}}" alt="#"></a>
+                                                                                    @if($comment->user->images =="")
+                                                                                        <img class="hinh-anh-comment-con media-object" src="../public/thethao/img/logo/user.jpg" alt="#">
+                                                                                    @else
+                                                                               <img class="hinh-anh-comment-con media-object" src="../public/images/{{$comment_con ->user->images}}" alt="#">\
+                                                                                        @endif
                                                                                 </div>
                                                                                 <div class="media-body">
                                                                                     <div class="clearfix">
@@ -445,131 +453,6 @@
                                                     </div>
                                                     <div class="leave-comment">
                                                         <!-- Rating Stars Box -->
-                                                        @if($haha ==true)
-                                                            <h4 class="blog-section-title border-left mb-30">Đánh giá chất lượng sản phẩm</h4>
-                                                            @if($start=="")
-                                                                <div class='rating-stars text-center'>
-                                                                    <ul id='stars'>
-                                                                        <li class='star' title='Poor' data-value='1'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Fair' data-value='2'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Good' data-value='3'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Excellent' data-value='4'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='WOW!!!' data-value='5'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            @elseif($start ==1)
-                                                                <div class='rating-stars text-center'>
-                                                                    <ul>
-                                                                        <li class='star' title='Poor'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Fair' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Good'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Excellent' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='WOW!!!' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            @elseif($start==2)
-                                                                <div class='rating-stars text-center'>
-                                                                    <ul>
-                                                                        <li class='star' title='Poor'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Fair' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Good'>
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Excellent' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='WOW!!!' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            @elseif($start==3)
-                                                                <div class='rating-stars text-center'>
-                                                                    <ul>
-                                                                        <li class='star' title='Poor'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Fair' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Good'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Excellent' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='WOW!!!' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            @elseif($start==4)
-                                                                <div class='rating-stars text-center'>
-                                                                    <ul>
-                                                                        <li class='star' title='Poor'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Fair' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Good'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Excellent' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='WOW!!!' >
-                                                                            <i class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            @else
-                                                                <div class='rating-stars text-center'>
-                                                                    <ul>
-                                                                        <li class='star' title='Poor'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Fair' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Good'>
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='Excellent' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                        <li class='star' title='WOW!!!' >
-                                                                            <i style="color: yellow" class='fa fa-star fa-fw'></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-
-                                                            @endif
-                                                        @endif
                                                     </div>
                                                     <!-- leave your comment -->
                                                     <form >
@@ -590,6 +473,10 @@
                                     </div>
                                     <!--  hr -->
                                     <hr>
+                                </div>
+                                <div class="col-md-4">
+                                    <img style="float: right;margin-bottom: 50px" src="../public/thethao/img/bg/tra-gop.jpg">
+                                    <img style="float: right" src="../public/thethao/img/bg/GHEP1-01.jpg">
                                 </div>
                             </div>
                         </div>
@@ -905,7 +792,7 @@
 <script type="text/javascript">
 
     function haha(id){
-        alert(id);
+
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

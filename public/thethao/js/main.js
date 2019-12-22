@@ -237,7 +237,7 @@
         range: true,
         min: 0,
         max: 80000000,
-        values: [ 0, 8000000],
+        values: [ 0, 80000000],
         slide: function( event, ui ) {
             $( "#amount" ).val( ui.values[ 0 ].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + " - " + ui.values[ 1 ].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') );
         }

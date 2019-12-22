@@ -271,7 +271,11 @@
                 @foreach($comments_parent as $comment)
                 <div class="media mt-30">
                   <div class="media-left pr-30">
-                    <a href="#"><img class="hinh-anh-comment media-object" src="../public/images/{{$comment->user->images}}" alt="#"></a>
+                    @if($comment->user->images =="")
+                      <img class="hinh-anh-comment media-object" src="../public/thethao/img/logo/user.jpg" alt="#">
+                    @else
+                      <img class="hinh-anh-comment media-object" src="../public/images/{{$comment->user->images}}" alt="#">
+                    @endif
                   </div>
                   <div class="media-body">
                     <div class="clearfix">
@@ -291,7 +295,11 @@
                     @if($comment_con->id_parent == $comment->id)
                         <div class="media mt-30" style="margin-left: 12%">
                           <div class="media-left pr-30">
-                            <a href="#"><img class="hinh-anh-comment-con media-object" src="../public/images/{{$comment_con ->user->images}}" alt="#"></a>
+                            @if($comment->user->images =="")
+                              <img class="hinh-anh-comment-con media-object" src="../public/thethao/img/logo/user.jpg" alt="#">
+                            @else
+                              <img class="hinh-anh-comment-con media-object" src="../public/images/{{$comment_con ->user->images}}" alt="#">\
+                            @endif
                           </div>
                           <div class="media-body">
                             <div class="clearfix">

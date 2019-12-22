@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="thethao/css/responsive.css">
      <link rel="stylesheet" href="thethao/css/thethao.css">
     <link rel="stylesheet" href="thethao/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script src="thethao/js/vendor/modernizr-2.8.3.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>

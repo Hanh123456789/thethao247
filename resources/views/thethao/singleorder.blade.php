@@ -53,11 +53,23 @@
                              <p>{{number_format($bill->unit_price)}} đ</p>
                            </div>
                            <div class="col-lg-3">
+                             @if($bill->bill->status != 1)
                               <span class="quick-add-to-cart" style="display: inline-flex;float: right;">
-                                @if($bill->bill->status != 1)
+
                              <a href="{{route('xoadonhang',$bill->id)}}" ><button class="single_add_to_cart_button"style="font-family: 'Roboto', sans-serif;" >Hủy sản phẩm</button></a>
-                                  @endif
-                             </span>
+                                 </span>
+                                  @else
+                               <div class='rating-stars text-center'>
+                                 @php
+                                  $rating =  $bill->ratingsao($bill->id_product);
+                                 @endphp
+                                 <ul id='stars'>
+                                  @include('thethao.danhgiasao')
+                                 </ul>
+                               </div>
+
+                               @endif
+
                            </div>
                          </div>
                      </div>

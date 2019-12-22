@@ -178,73 +178,79 @@
                 var soluong = parseInt(document.getElementById("soluong-"+id).value);
                 var tongtien = parseInt(document.getElementById('tongao').innerHTML);
                 var cartsl = parseInt(document.getElementById('haha').innerHTML);
+                var so = parseInt(document.getElementById('so-'+id).innerHTML);
+                var dem = soluong+1;
+                if (dem>so) {
+                    alert('Số lượng hàng không đủ.Vui lòng chọn sản phẩm khác hoặc liên hệ với quản trị viên để được hỗ trợ.');
+                    var soluonghienthi = $('#soluong-'+id).val(soluong-1);
+                }else {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{route('update_to_cart')}}",
+                        type: 'POST',  // POST or GET
+                        cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
+                        data: {
+                            aId: id,
+                            soLuong: soluong,
+                            tongTien: tongtien,
+                        },
+                        success: function (data) { // dữ liệu lấy qua biến data
+                            $('.cart-' + id).html(data);
+                            $.ajax({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                url: "{{route('update_to_cart1')}}",
+                                type: 'POST',  // POST or GET
+                                cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
+                                data: {
+                                    aId: id,
+                                    soLuong: soluong,
+                                    tongTien: tongtien,
+                                },
+                                success: function (data) { // dữ liệu lấy qua biến data
+                                    var index = data.indexOf('-');
+                                    var data1 = data.slice(0, index);
+                                    var data2 = data.slice(index + 1)
+                                    $('.hihi123').html(data1);
+                                    $('#tongao').html(data2);
+                                    $.ajax({
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        url: "{{route('update_to_cart2')}}",
+                                        type: 'POST',  // POST or GET
+                                        cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
+                                        data: {
+                                            aId: id,
+                                            soLuong: soluong,
+                                            tongTien: tongtien,
+                                            cartSl: cartsl
+                                        },
+                                        success: function (data) { // dữ liệu lấy qua biến data
+                                            $('#haha').html(data);
+                                        },
 
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{route('update_to_cart')}}",
-                    type: 'POST',  // POST or GET
-                    cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
-                    data: {
-                        aId: id,
-                        soLuong:soluong,
-                        tongTien:tongtien,
-                    },
-                    success: function (data) { // dữ liệu lấy qua biến data
-                        $('.cart-'+id).html(data);
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            url: "{{route('update_to_cart1')}}",
-                            type: 'POST',  // POST or GET
-                            cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
-                            data: {
-                                aId: id,
-                                soLuong:soluong,
-                                tongTien:tongtien,
-                            },
-                            success: function (data) { // dữ liệu lấy qua biến data
-                                var index = data.indexOf('-');
-                                var data1 = data.slice(0,index);
-                                var data2 = data.slice(index+1)
-                                $('.hihi123').html(data1);
-                                $('#tongao').html(data2);
-                                $.ajax({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    url: "{{route('update_to_cart2')}}",
-                                    type: 'POST',  // POST or GET
-                                    cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
-                                    data: {
-                                        aId: id,
-                                        soLuong:soluong,
-                                        tongTien:tongtien,
-                                        cartSl:cartsl
-                                    },
-                                    success: function (data) { // dữ liệu lấy qua biến data
-                                        $('#haha').html(data);
-                                    },
+                                        error: function () {
+                                            alert('Có lỗi xảy ra');
+                                        }
+                                    });
+                                },
 
-                                    error: function () {
-                                        alert('Có lỗi xảy ra');
-                                    }
-                                });
-                            },
+                                error: function () {
+                                    alert('Có lỗi xảy ra');
+                                }
+                            });
 
-                            error: function () {
-                                alert('Có lỗi xảy ra');
-                            }
-                        });
+                        },
 
-                    },
-
-                    error: function () {
-                        alert('Có lỗi xảy ra');
-                    }
-                });
+                        error: function () {
+                            alert('Có lỗi xảy ra');
+                        }
+                    });
+                }
             }
 
         </script>
@@ -254,72 +260,78 @@
                 var soluong = parseInt(document.getElementById("soluong-"+id).value);
                 var tongtien = parseInt(document.getElementById('tongao').innerHTML);
                 var cartsl = parseInt(document.getElementById('haha').innerHTML);
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{route('update_to_cart3')}}",
-                    type: 'POST',  // POST or GET
-                    cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
-                    data: {
-                        aId: id,
-                        soLuong:soluong,
-                        tongTien:tongtien,
-                    },
-                    success: function (data) { // dữ liệu lấy qua biến data
-                        $('.cart-'+id).html(data);
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            url: "{{route('update_to_cart4')}}",
-                            type: 'POST',  // POST or GET
-                            cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
-                            data: {
-                                aId: id,
-                                soLuong:soluong,
-                                tongTien:tongtien,
-                            },
-                            success: function (data) { // dữ liệu lấy qua biến data
-                                var index = data.indexOf('-');
-                                var data1 = data.slice(0,index);
-                                var data2 = data.slice(index+1);
-                                $('.hihi123').html(data1);
-                                $('#tongao').html(data2);
-                                $.ajax({
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    url: "{{route('update_to_cart5')}}",
-                                    type: 'POST',  // POST or GET
-                                    cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
-                                    data: {
-                                        aId: id,
-                                        soLuong:soluong,
-                                        tongTien:tongtien,
-                                        cartSl:cartsl
-                                    },
-                                    success: function (data) { // dữ liệu lấy qua biến data
-                                        $('#haha').html(data);
-                                    },
+                var dem = soluong-1;
+                if (dem<0) {
+                    alert('Số lượng hàng phải lớn hơn 0.');
+                    var soluonghienthi = $('#soluong-'+id).val(soluong-1);
+                }else {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{route('update_to_cart3')}}",
+                        type: 'POST',  // POST or GET
+                        cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
+                        data: {
+                            aId: id,
+                            soLuong: soluong,
+                            tongTien: tongtien,
+                        },
+                        success: function (data) { // dữ liệu lấy qua biến data
+                            $('.cart-' + id).html(data);
+                            $.ajax({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                url: "{{route('update_to_cart4')}}",
+                                type: 'POST',  // POST or GET
+                                cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
+                                data: {
+                                    aId: id,
+                                    soLuong: soluong,
+                                    tongTien: tongtien,
+                                },
+                                success: function (data) { // dữ liệu lấy qua biến data
+                                    var index = data.indexOf('-');
+                                    var data1 = data.slice(0, index);
+                                    var data2 = data.slice(index + 1)
+                                    $('.hihi123').html(data1);
+                                    $('#tongao').html(data2);
+                                    $.ajax({
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        url: "{{route('update_to_cart5')}}",
+                                        type: 'POST',  // POST or GET
+                                        cache: false, // true là lưa lại thông tin, false ko lưu, có thể xóa
+                                        data: {
+                                            aId: id,
+                                            soLuong: soluong,
+                                            tongTien: tongtien,
+                                            cartSl: cartsl
+                                        },
+                                        success: function (data) { // dữ liệu lấy qua biến data
+                                            $('#haha').html(data);
+                                        },
 
-                                    error: function () {
-                                        alert('Có lỗi xảy ra');
-                                    }
-                                });
-                            },
+                                        error: function () {
+                                            alert('Có lỗi xảy ra');
+                                        }
+                                    });
+                                },
 
-                            error: function () {
-                                alert('Có lỗi xảy ra');
-                            }
-                        });
+                                error: function () {
+                                    alert('Có lỗi xảy ra');
+                                }
+                            });
 
-                    },
+                        },
 
-                    error: function () {
-                        alert('Có lỗi xảy ra');
-                    }
-                });
+                        error: function () {
+                            alert('Có lỗi xảy ra');
+                        }
+                    });
+                }
             }
 
         </script>
@@ -368,7 +380,77 @@
 
             }
         </script>
+<script>
+    $(document).ready(function(){
 
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function(){
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function(e){
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                }
+                else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function(){
+            $(this).parent().children('li.star').each(function(e){
+                $(this).removeClass('hover');
+            });
+        });
+
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function(){
+            var idpro=  $(this).attr("id");
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+            var id = $(this).parent().children('li.star');
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = ratingValue;
+            responseMessage(msg,idpro);
+
+        });
+    });
+    function responseMessage(msg,idpro) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+            l = msg;
+            id = idpro;
+            $.ajax({
+                headers: {
+
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+                },
+                url: "{{route('danh-gia-sao')}}",
+                type: 'POST',  // POST or GET
+                data: {
+                    mess: l,
+                    bid:id,
+
+
+                },
+                success: function (data) { // dữ liệu lấy qua biến data
+                    alert(data);
+                }
+            })
+        return false;
+    }
+</script>
         <script type="text/javascript">
 
             function addlike(id,trangthai){

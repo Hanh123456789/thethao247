@@ -392,6 +392,9 @@ NOTE: This is Header style file. All Header related style included in this file.
   padding-left: 20px;
   text-align: center;
 }
+.sticky .cart-toggler > a {
+  margin-top: -6px;
+}
 .total-cart-in:hover .cart-toggler > a {
   color: #ff7f00;
 }

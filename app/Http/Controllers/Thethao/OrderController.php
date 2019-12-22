@@ -7,6 +7,7 @@ use App\Models\BillDetail;
 use App\Models\Carts;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,6 @@ class OrderController extends Controller
         $id_user = Auth::user()->id;
         $cart_header = Carts::where('id_user',$id_user)->get();
         $bill_details = BillDetail::where('id_bill',$id)->orderBy('id','DESC')->get();
-
         return view('thethao.singleorder',compact('bill_details','producttypes','cart_header'));
     }
     public function deletesingle($id){

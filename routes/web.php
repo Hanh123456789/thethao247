@@ -105,26 +105,30 @@ Route::group([
 //thethao
 
 Route::get('/','Thethao\IndexController@index')->name('the_thao_index');
-Route::get('/muahang/{id}','Thethao\IndexController@addcart')->name('add_cart')->where('id','[0-9]+');
-Route::get('/gio-hang','Thethao\IndexController@cart')->name('cart');
-Route::get('/xoa-hang/{id}', 'Thethao\IndexController@delproduct')->name('xoasanpham');
-Route::get('/giam/{id}', 'Thethao\IndexController@giam')->name('giam')->where('id','[0-9]+');
-Route::post('/them-hang','Thethao\IndexController@addstatus')->name('add_to_cart');
-Route::get('/xem-gio-hang/{id}','Thethao\IndexController@getcart')->name('get_cart')->where('id','[0-9]+');
-Route::post('/sua-gio-hang','Thethao\IndexController@updatestatus')->name('update_to_cart');
-Route::post('/sua-gio-hang1','Thethao\IndexController@updatestatus1')->name('update_to_cart1');
-Route::post('/sua-gio-hang2','Thethao\IndexController@updatestatus2')->name('update_to_cart2');
-Route::post('/sua-gio-hang3','Thethao\IndexController@updatestatus3')->name('update_to_cart3');
-Route::post('/sua-gio-hang4','Thethao\IndexController@updatestatus4')->name('update_to_cart4');
-Route::post('/sua-gio-hang5','Thethao\IndexController@updatestatus5')->name('update_to_cart5');
-Route::get('/chi-tiet-san-pham/{slug}-{id}','Thethao\IndexController@singleproduct')->name('singleproduct');
-Route::get('/danh-muc-san-pham/{slug}-{id}','Thethao\IndexController@categoriproduct')->name('categoriproduct');
-Route::get('/thong-tin-ca-nhan/{id}','Thethao\IndexController@profile')->name('profile')->where('id','[0-9]+');
-Route::post('/thong-tin-ca-nhan/{id}','Thethao\IndexController@updateprofile')->name('updateprofile')->where('id','[0-9]+');
-Route::get('/thanhtoan','Thethao\IndexController@thanhtoan')->name('thanhtoan');
-Route::post('/thanhtoandonhang','Thethao\IndexController@dathang')->name('dathang');
-Route::post('/thanhtoandonhangngay','Thethao\IndexController@dathangngay')->name('dathangngay');
-
+Route::group([
+    'middleware' => 'auth',
+], function () {
+    Route::get('/muahang/{id}', 'Thethao\IndexController@addcart')->name('add_cart')->where('id', '[0-9]+');
+    Route::get('/gio-hang', 'Thethao\IndexController@cart')->name('cart');
+    Route::get('/xoa-hang/{id}', 'Thethao\IndexController@delproduct')->name('xoasanpham');
+    Route::get('/giam/{id}', 'Thethao\IndexController@giam')->name('giam')->where('id', '[0-9]+');
+    Route::post('/them-hang', 'Thethao\IndexController@addstatus')->name('add_to_cart');
+    Route::get('/xem-gio-hang/{id}', 'Thethao\IndexController@getcart')->name('get_cart')->where('id', '[0-9]+');
+    Route::post('/sua-gio-hang', 'Thethao\IndexController@updatestatus')->name('update_to_cart');
+    Route::post('/sua-gio-hang1', 'Thethao\IndexController@updatestatus1')->name('update_to_cart1');
+    Route::post('/sua-gio-hang2', 'Thethao\IndexController@updatestatus2')->name('update_to_cart2');
+    Route::post('/sua-gio-hang3', 'Thethao\IndexController@updatestatus3')->name('update_to_cart3');
+    Route::post('/sua-gio-hang4', 'Thethao\IndexController@updatestatus4')->name('update_to_cart4');
+    Route::post('/sua-gio-hang5', 'Thethao\IndexController@updatestatus5')->name('update_to_cart5');
+    Route::get('/thong-tin-ca-nhan/{id}', 'Thethao\IndexController@profile')->name('profile')->where('id', '[0-9]+');
+    Route::post('/thong-tin-ca-nhan/{id}', 'Thethao\IndexController@updateprofile')->name('updateprofile')->where('id', '[0-9]+');
+    Route::get('/thanhtoan', 'Thethao\IndexController@thanhtoan')->name('thanhtoan');
+    Route::post('/thanhtoandonhang', 'Thethao\IndexController@dathang')->name('dathang');
+    Route::post('/thanhtoandonhangngay', 'Thethao\IndexController@dathangngay')->name('dathangngay');
+});
+//san-pham
+Route::get('/chi-tiet-san-pham/{slug}-{id}', 'Thethao\IndexController@singleproduct')->name('singleproduct');
+Route::get('/danh-muc-san-pham/{slug}-{id}', 'Thethao\IndexController@categoriproduct')->name('categoriproduct');
 //Lien-he
 Route::get('/lien-he','Thethao\ContactController@index')->name('lienhe');
 Route::post('/lien-he','Thethao\ContactController@postcontact')->name('post_lienhe');
@@ -151,19 +155,23 @@ Route::post('/binh-luan-new-2','Thethao\CommentNewController@comment2')->name('b
 Route::post('/binh-luan-product-1','Thethao\CommentProductController@comment1')->name('binh-luan-product-1');
 Route::post('/binh-luan-product-2','Thethao\CommentProductController@comment2')->name('binh-luan-product-2');
 Route::post('/danh-gia-sao','Thethao\RatingController@danhgia')->name('danh-gia-sao');
-Route::get('/mua-hang/{slug}-{id}','Thethao\IndexController@muangay')->name('muangay');
-Route::get('/thanh-toan-hang','Thethao\IndexController@thanhtoanngay')->name('thanhtoanngay');
 Route::post('/them-yeu-thich','Thethao\LikeProductsController@addlike')->name('themyeuthich');
 Route::post('/them-yeu-thich-new','Thethao\LikeProductsController@addlikenew')->name('themyeuthichnew');
 Route::post('/yeu-thich-bong-da','Thethao\LikeProductsController@yeuthichbongda')->name('yeuthichbongda');
 Route::post('/yeu-thich-may-chay-bo','Thethao\LikeProductsController@yeuthichmaychaybo')->name('yeuthichmaychaybo');
 Route::post('/yeu-thich-gym','Thethao\LikeProductsController@yeuthichgym')->name('yeuthichgym');
 Route::post('/yeu-thich-xe-dap','Thethao\LikeProductsController@yeuthichxedap')->name('yeuthichxedap');
-Route::get('/danh-sach-san-pham-yeu-thich-cua-ban/{scope?}','Thethao\LikeProductsController@list')->name('listsanphamlike');
 Route::get('/tim-kiem-san-pham','Thethao\SearchProductController@search')->name('searchsanpham');
+Route::group([
+    'middleware' => 'auth',
+], function () {
+    Route::get('/mua-hang/{slug}-{id}','Thethao\IndexController@muangay')->name('muangay');
+    Route::get('/thanh-toan-hang','Thethao\IndexController@thanhtoanngay')->name('thanhtoanngay');
+    Route::get('/danh-sach-san-pham-yeu-thich-cua-ban/{scope?}','Thethao\LikeProductsController@list')->name('listsanphamlike');
 Route::get('/don-hang-cua-ban','Thethao\OrderController@index')->name('donhangcuaban');
 Route::get('/huy-don-hang-cua-ban/{id}','Thethao\OrderController@deletetotal')->name('huydonhangtong')->where('id','[0-9]+');
 Route::get('/chi-tiet-don-hang/{id}','Thethao\OrderController@detailorder')->name('chitietdonhang')->where('id','[0-9]+');
 Route::get('/huy-hang-da-dat/{id}','Thethao\OrderController@deletesingle')->name('xoadonhang')->where('id','[0-9]+');
+});
 Route::post('/admin/trangthai','Admin\BillController@trangthai')->name('trangthai');
 Route::post('/khoang-cach','Thethao\KhoangcachController@khoangcach')->name('khoangcach');

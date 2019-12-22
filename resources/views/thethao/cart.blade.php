@@ -58,11 +58,11 @@ cursor: default;" disabled=""  data-toggle="tab">
                                             <table class="text-center">
                                                 <thead>
                                                 <tr>
-                                                    <th class="product-thumbnail">product</th>
-                                                    <th class="product-price">price</th>
-                                                    <th class="product-quantity">Quantity</th>
-                                                    <th class="product-subtotal">total</th>
-                                                    <th class="product-remove">remove</th>
+                                                    <th class="product-thumbnail" style="font-family: 'Sarabun', sans-serif;">Tên sản phẩm</th>
+                                                    <th class="product-price" style="font-family: 'Sarabun', sans-serif;">Giá</th>
+                                                    <th class="product-quantity" style="font-family: 'Sarabun', sans-serif;">Số lượng</th>
+                                                    <th class="product-subtotal" style="font-family: 'Sarabun', sans-serif;">Tổng tiền</th>
+                                                    <th class="product-remove" style="font-family: 'Sarabun', sans-serif;">Xóa</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -93,7 +93,8 @@ cursor: default;" disabled=""  data-toggle="tab">
                                                     <td class="product-quantity">
                                                         <div class="123"></div>
                                                         <div class="f-left"><div class="dec qtybutton" onclick="return addsub({{$detailcart->id_product}})" >-</div>
-                                                            <input type="text" value="{{$arrsoluong[$detailcart->id_product]}}" data-comid ="{{$detailcart->id_product}}" id="soluong-{{$detailcart->id_product}}"  name="qtybutton" class="cart-plus-minus-box">
+                                                            <input type="text" value="{{$arrsoluong[$detailcart->id_product]}}" data-comid ="{{$detailcart->id_product}}" id="soluong-{{$detailcart->id_product}}"  name="qtybutton"  class="cart-plus-minus-box">
+                                                            <span id="so-{{$detailcart->id_product}}" hidden>{{$detailcart->product->unit}}</span>
                                                         <div onclick="return add({{$detailcart->id_product}})" class="inc qtybutton">+</div></div>
                                                     </td>
 
